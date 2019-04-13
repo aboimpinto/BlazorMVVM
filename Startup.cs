@@ -1,3 +1,5 @@
+using BlazorMVVM.Models;
+using BlazorMVVM.ViewModels;
 using Microsoft.AspNetCore.Blazor.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,6 +9,9 @@ namespace BlazorMVVM
     {
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IFetchDataViewModel, FetchDataViewModel>();
+
+            services.AddTransient<IWeatherForecastModel, WeatherForecastModel>();
         }
 
         public void Configure(IBlazorApplicationBuilder app)
