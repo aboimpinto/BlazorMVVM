@@ -9,8 +9,6 @@ namespace BlazorMVVM
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IFetchDataViewModel, FetchDataViewModel>();
-
             services.AddTransient<IWeatherForecastModel, WeatherForecastModel>();
         }
 

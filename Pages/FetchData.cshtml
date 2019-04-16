@@ -1,11 +1,11 @@
 ﻿@page "/fetchdata"
-@inject IFetchDataViewModel FetchDataViewModel
+@inherits FetchDataBlazorComponent
 
 <h1>Weather forecast</h1>
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (FetchDataViewModel.WeatherForecast == null)
+@if (@WeatherForecast == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -21,7 +21,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in FetchDataViewModel.WeatherForecast)
+            @foreach (var forecast in @WeatherForecast)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -32,11 +32,4 @@ else
             }
         </tbody>
     </table>
-}
-
-@functions {
-    protected override async Task OnInitAsync()
-    {
-        await ((ILoadable) FetchDataViewModel).Load();
-    }
 }
